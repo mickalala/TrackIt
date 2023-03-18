@@ -44,6 +44,11 @@ const ResetStyle = createGlobalStyle`
 		border-collapse: collapse;
 		border-spacing: 0;
 	}
+	
+	input::placeholder {
+       color:  #DBDBDB;
+	   padding-left:11px;
+    }
 `
 
 export default ResetStyle
