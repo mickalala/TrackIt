@@ -5,6 +5,7 @@ export default function HistoryPage(){
     return(
     <>
     <Header/>
+    
     <Menu/>
     </>
     );

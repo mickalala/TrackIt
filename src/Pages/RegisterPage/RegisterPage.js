@@ -2,13 +2,14 @@ import logo from "../../constants/imgs/Group 8.png"
 import RegisterForm from "./style";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/urls";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import axios from "axios";
 
 
 export default function RegisterPage() {
 
     const [form, setForm]= useState({email: "", name: "", image: "", password: ""})
+    const [notAble, setNotAble]= useState(false)
 
     function handleForm(e){
         setForm({...form, [e.target.name]:e.target.value})
@@ -16,12 +17,13 @@ export default function RegisterPage() {
 
     function sendForm(e){
       e.preventDefault()
-      
+
         axios.post(`${BASE_URL}/auth/sign-up`,form)
         .then(()=>{navigate("/") 
         console.log("deubom")})
-        .catch(err=>alert(err.response.data.message))
-
+        .catch(err=>{alert(err.response.data.message)
+         setNotAble(false)})
+    setNotAble(true)
     }
 
     console.log(form)
@@ -46,7 +48,7 @@ export default function RegisterPage() {
             name="image"
             value={form.image} onChange={handleForm}/>
 
-            <button onClick={sendForm}>Cadastrar</button>
+            <button onClick={sendForm} disabled={notAble} >Cadastrar</button>
         </RegisterForm>
     );
 }
