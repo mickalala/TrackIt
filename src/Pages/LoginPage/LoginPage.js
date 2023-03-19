@@ -1,16 +1,19 @@
 import LoginForm from "./style"
 import logo from "../../constants/imgs/Group 8.png"
 import { Link, useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import axios from "axios"
 import { BASE_URL } from "../../constants/urls"
+import UserContext from "../../contexts/UserContext"
 
 export default function LoginPage() {
+
+    const { setUserImg, setUserToken}= useContext(UserContext)
+    
 
     const navigate= useNavigate();
     const [form,setForm]=useState({email:"", password:""})
     const [load, setLoad]=useState()
-
 
     function handleForm(e){
         setForm({...form, [e.target.name]:e.target.value})
@@ -20,6 +23,8 @@ export default function LoginPage() {
         e.preventDefault()
          axios.post(`${BASE_URL}/auth/login`,form)
          .then((answer)=>{navigate("/habitos")
+         setUserImg(answer.data.image)
+         setUserToken(answer.data.token)
         console.log(answer.data)})
          .catch(err=>alert(err.response.data.message))
     }

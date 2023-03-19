@@ -5,22 +5,34 @@ import RegisterPage from "./Pages/RegisterPage/RegisterPage"
 import HabitsPage from "./Pages/HabitsPage/HabitsPage"
 import TodayPage from "./Pages/TodayPage/TodayPage"
 import HistoryPage from "./Pages/HistoryPage/HistoryPage"
+import Globalstyle from "./style/Globalstyle"
+
+import { useState } from "react"
+
+import UserContext from "./contexts/UserContext"
 
 export default function App() {
+
+  const [userImg, setUserImg]= useState("")
+  const [userToken, setUserToken]= useState("")
+
   return (
-   
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
+    <UserContext.Provider value={{userImg,setUserImg, userToken, setUserToken}}>
+      <BrowserRouter>
 
-        <Route path="/cadastro" element={<RegisterPage />} />
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
 
-        <Route path="/hoje" element={<TodayPage />}/>
-        
-        <Route path="/habitos" element={<HabitsPage />}/>
+          <Route path="/cadastro" element={<RegisterPage />} />
 
-        <Route path="/historico" element={<HistoryPage />}/>
-      </Routes>
-    </BrowserRouter>
-   )
+          <Route path="/hoje" element={<TodayPage />} />
+
+          <Route path="/habitos" element={<HabitsPage />} />
+
+          <Route path="/historico" element={<HistoryPage />} />
+        </Routes>
+
+      </BrowserRouter>
+    </UserContext.Provider>
+  )
 }

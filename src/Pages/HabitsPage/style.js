@@ -88,6 +88,7 @@ button{
     border-radius: 5px;
     margin-right:4px;
     border: 1px solid #D5D5D5;
+    background-color:#FFFFFF;
 
     color: #DBDBDB;
     font-family: 'Lexend Deca';

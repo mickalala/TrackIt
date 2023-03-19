@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
+
 export default function Menu() {
 
     const percentage = 66;
-
+  
 
     return (
         <MenuStyle>

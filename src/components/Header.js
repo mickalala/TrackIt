@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import usergirl from "../constants/imgs/usergirl.jpg"
+import UserContext from "../contexts/UserContext";
+import { useContext } from "react";
 
-export default function Header() {
+export default function Header() { 
+    
+    const {userImg}= useContext(UserContext)
+
     return (
         <HeaderStyled>
             <h1>Track it</h1>
-            <img src={usergirl} alt={"cadê"} />
+            <img src={userImg} alt={"cadê"} />
         </HeaderStyled>
     )
 }
