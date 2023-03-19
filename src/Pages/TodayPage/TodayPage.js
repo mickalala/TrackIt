@@ -4,29 +4,33 @@ import styled from "styled-components";
 import dayjs from "dayjs";
 
 import check from "../../constants/imgs/Group.png"
-
+import UserContext from "../../contexts/UserContext";
+import { useContext } from "react";
 
 export default function TodayPage() {
 
-    console.log(dayjs().$d)
-    console.log(Date())
+    const { arrayHabits } = useContext(UserContext)
+
+    console.log(dayjs().month())
+
     return (
         <>
             <Header />
             <TodayStyled>
-                <h1>Segunda, 17/05</h1>
+                <h1>Segunda, {dayjs().$D}/03</h1>
                 <p>Nenhum hábito concluído ainda</p>
             </TodayStyled>
-            <CardToday>
+            {arrayHabits.map((array)=>(
+            <CardToday key={array.id}>
                 <div>
-                <h1>Ler 1 capítulo de livro</h1>
-                <p>Sequência atual: 3 dias</p>
-                <p>Seu recorde: 5 dias</p>
+                    <h1>{array.name}</h1>
+                    <p>Sequência atual: 3 dias</p>
+                    <p>Seu recorde: 5 dias</p>
                 </div>
-              <Check>
-                <img src={check}/>
-              </Check>
-            </CardToday>
+                <Check>
+                    <img src={check} />
+                </Check>
+            </CardToday>))}
             <Menu />
         </>
     );
@@ -54,17 +58,16 @@ const TodayStyled = styled.div`
     }
 `
 
-const CardToday= styled.div`
+const CardToday = styled.div`
 margin-left:17px;
 margin-top:28px;
 width: 340px;
 height: 94px;
-left: 18px;
-top: 177px;
 
 background: lightseagreen;
 border-radius: 5px;
 display:flex;
+position:relative;
 div{
     margin-top:13px;
 }
@@ -89,13 +92,14 @@ p{
 
 
 `
- const Check =styled.button`
+const Check = styled.button`
  width: 69px;
 height: 69px;
-left: 276px;
 border-radius:5px;
 background-color:#EBEBEB;
 border: 1px solid #E7E7E7;
-margin-left:35px;
-margin-top:13px;
+top:13px;
+right:13px;
+position:absolute;
+
  `

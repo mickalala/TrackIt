@@ -49,6 +49,9 @@ const ResetStyle = createGlobalStyle`
        color:  #DBDBDB;
 	   padding-left:11px;
     }
+	*{
+		box-sizing:border-box;
+	}
 `
 
 export default ResetStyle

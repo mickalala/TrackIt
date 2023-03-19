@@ -41,6 +41,7 @@ const HabitsContainer = styled.div`
    margin-left:17px;
 
    p{
+    margin-top:29px;
     font-family: Lexend Deca;
     font-size: 18px;
     font-weight: 400;
@@ -48,17 +49,18 @@ const HabitsContainer = styled.div`
     letter-spacing: 0em;
     text-align: left;
     color: #666666;
+    display:none;
 
    }
 `
 
-const CardHabit = styled.div`
+const CardAddHabit = styled.div`
 background-color: lightcyan;
 height: 180px;
 width: 340px;
 border-radius: 5px;
 margin-top:20px;
-margin-bottom:29px;
+
 position: relative;
 
 display:${(props)=> (props.showCreateHabit)?"": "none"};
@@ -78,22 +80,9 @@ input{
 
 }
 `
-const DaysButtons = styled.div`
+const DaysButtonsContainer = styled.div`
 margin-left:19px;
 margin-top:8px;
-
-button{
-    height: 30px;
-    width: 30px;
-    border-radius: 5px;
-    margin-right:4px;
-    border: 1px solid #D5D5D5;
-    background-color:#FFFFFF;
-
-    color: #DBDBDB;
-    font-family: 'Lexend Deca';
-    font-size: 19.976px;
-}
 
 `
 const SaveOrCancel = styled.div`
@@ -120,5 +109,50 @@ button:last-child{
 }
 
 `
+const CardHabit=styled.div`
+height: 91px;
+width: 340px;
+border-radius: 5px;
+background-color: lightgoldenrodyellow ;
+margin-top:20px;
+padding-top:13px;
+display:flex;
+position: relative;
 
-export {AddHabit, HabitsContainer, CardHabit, DaysButtons, SaveOrCancel}
+h1{
+    font-family: 'Lexend Deca';
+    font-size: 19.976px;
+    color: #666666;
+    margin-left:15px;
+}
+
+
+`
+const Habitdays= styled.div`
+position:absolute;
+top:46px;
+left:14px;
+button{
+    width: 30px;
+    height: 30px;
+    margin-right:4px;
+
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+    
+    font-family: 'Lexend Deca';
+    font-size: 19.976px;
+    color: #DBDBDB;
+    }
+`
+const Trash= styled.button`
+    Width:13px;
+    Height:15px;
+    position:absolute;
+    top:11px;
+    right:20px;
+    background-color:transparent;
+    border-color:transparent;
+`
+export {AddHabit, HabitsContainer, CardAddHabit, DaysButtonsContainer, SaveOrCancel, CardHabit, Habitdays, Trash}
