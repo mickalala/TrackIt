@@ -80,7 +80,7 @@ export default function HabitsPage() {
             <HabitsContainer>
                 <AddHabit>
                     <h1>Meus hábitos</h1>
-                    <button onClick={() => setShowCreateHabit(true)}>+</button>
+                    <button onClick={() => setShowCreateHabit(true)} data-test="habit-create-btn">+</button>
                 </AddHabit>
                 <CardAddHabit showCreateHabit={showCreateHabit} data-test="habit-create-container" >
                     <input type="text" placeholder={"nome do hábito"}
