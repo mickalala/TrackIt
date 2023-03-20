@@ -2,16 +2,15 @@ import styled from "styled-components"
 import { useContext, useState } from "react"
 import UserContext from "../../contexts/UserContext"
 
-export default function DaysButtons({d}) {
+export default function DaysButtons({ d }) {
 
     const [clicked, setClicked] = useState(0)
-    const {days, setDays}=useContext(UserContext)
+    const { days, setDays } = useContext(UserContext)
 
     function chosingDays(weekday) {
         if (days.includes(weekday)) {
             const filteredList = days.filter((d) => d !== weekday)
             setDays(filteredList)
-            setClicked(0)
             return
         }
 
@@ -32,27 +31,44 @@ export default function DaysButtons({d}) {
             newdays.push(7)
         }
         setDays(newdays)
-        setClicked(1)
     }
-
     return (
-        <DayWeek onClick={() => chosingDays(d.numberday)}
-           key={d.numberday} clicked={clicked} days={days}>
-            {d.day}
-        </DayWeek>
+        days.includes(d.numberday) ?
+            <DayWeekSelected onClick={() => chosingDays(d.numberday)}
+                key={d.numberday} clicked={clicked} days={days}>
+                {d.day}
+            </DayWeekSelected> :
+            <DayWeekNotSelected onClick={() => chosingDays(d.numberday)}
+                key={d.numberday} clicked={clicked} days={days}>
+                {d.day}
+            </DayWeekNotSelected>
     )
+
+
 }
 
 
-const DayWeek= styled.button`
+const DayWeekSelected = styled.button`
     height: 30px;
     width: 30px;
     border-radius: 5px;
     margin-right:4px;
     border: 1px solid #D5D5D5;
-    background-color:${(props)=>(props.clicked===1)?"#CFCFCF":"#FFFFFF"};
+    background-color:#CFCFCF;
+    color:#FFFFFF;
+    font-family: 'Lexend Deca';
+    font-size: 19.976px;
+`
 
-    color: ${(props)=>(props.clicked===1)?"#FFFFFF":"#DBDBDB"};
+
+const DayWeekNotSelected = styled.button`
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    margin-right:4px;
+    border: 1px solid #D5D5D5;
+    background-color:#FFFFFF;
+    color:#DBDBDB;
     font-family: 'Lexend Deca';
     font-size: 19.976px;
 `

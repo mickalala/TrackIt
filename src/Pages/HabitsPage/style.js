@@ -39,7 +39,7 @@ button{
 const HabitsContainer = styled.div`
    margin-top:98px;
    margin-left:17px;
-
+   margin-bottom:90px;
    p{
     margin-top:29px;
     font-family: Lexend Deca;
@@ -131,19 +131,7 @@ const Habitdays= styled.div`
 position:absolute;
 top:46px;
 left:14px;
-button{
-    width: 30px;
-    height: 30px;
-    margin-right:4px;
 
-    background: #FFFFFF;
-    border: 1px solid #D5D5D5;
-    border-radius: 5px;
-    
-    font-family: 'Lexend Deca';
-    font-size: 19.976px;
-    color: #DBDBDB;
-    }
 `
 const Trash= styled.button`
     Width:13px;

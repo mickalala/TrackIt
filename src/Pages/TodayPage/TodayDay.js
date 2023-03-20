@@ -1,9 +1,14 @@
 import styled from "styled-components"
 import dayjs from "dayjs"
 
+import { useContext } from "react";
+import UserContext from "../../contexts/UserContext";
+
 export default function TodayDay() {
     let today="";
     let thisMonth="";
+
+    const {percentage}= useContext(UserContext)
     
     const dayNumber=dayjs().day()
     const monthNumber=dayjs().month()
@@ -29,7 +34,8 @@ export default function TodayDay() {
     return (
         <TodayStyled>
             <h1>{today}, {dayjs().$D}/{thisMonth}</h1>
-            <p>Nenhum hábito concluído ainda</p>
+            {(percentage==0)&&(<Not>Nenhum hábito concluído ainda</Not>)}
+            {(percentage>0)&&(<ShowPercentage>{percentage}% dos hábitos concluídos</ShowPercentage>)}
         </TodayStyled>
     )
 }
@@ -45,7 +51,9 @@ const TodayStyled = styled.div`
     letter-spacing: 0em;
     text-align: left;
     color: #126BA5;}
-    p{
+ 
+`
+const Not=styled.p`       
         font-family: 'Lexend Deca';
         font-style: normal;
         font-weight: 400;
@@ -53,5 +61,12 @@ const TodayStyled = styled.div`
         line-height: 22px;
 
         color: #BABABA;
-    }
+`
+const ShowPercentage= styled.p`
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 17.976px;
+        line-height: 22px;
+        color:#8FC549;
 `

@@ -18,9 +18,10 @@ export default function App() {
 
   const [arrayHabits, setArrayHabits]= useState([])
   const [days, setDays] = useState([]);
+  const [percentage, setPercentage]= useState(0)
 
   return (
-    <UserContext.Provider value={{userImg,setUserImg, userToken, setUserToken, days, setDays, arrayHabits, setArrayHabits}}>
+    <UserContext.Provider value={{userImg,setUserImg, userToken, setUserToken, days, setDays, arrayHabits, setArrayHabits, percentage, setPercentage}}>
       <BrowserRouter>
 
         <Routes>

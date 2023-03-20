@@ -1,8 +1,25 @@
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
 import styled from "styled-components";
+import axios from "axios";
+import { useContext, useEffect } from "react";
+
+import UserContext from "../../contexts/UserContext";
+import { BASE_URL } from "../../constants/urls";
 
 export default function HistoryPage() {
+
+    const {userToken}= useContext(UserContext)
+    
+    useEffect(()=>{
+      axios.get(`${BASE_URL}/habits/history/daily`,{
+        headers: {
+            'Authorization': `Bearer ${userToken}`
+        }
+}).then((ans)=>console.log(ans.data))
+  .catch(err=> alert(err.response.data.mensage))
+    },[])
+    
     return (
         <>
             <Header />

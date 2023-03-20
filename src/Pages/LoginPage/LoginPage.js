@@ -22,7 +22,7 @@ export default function LoginPage() {
     function logUser(e){
         e.preventDefault()
          axios.post(`${BASE_URL}/auth/login`,form)
-         .then((answer)=>{navigate("/habitos")
+         .then((answer)=>{navigate("/hoje")
          setUserImg(answer.data.image)
          setUserToken(answer.data.token)
         console.log(answer.data)})

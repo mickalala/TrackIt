@@ -4,33 +4,77 @@ import styled from "styled-components";
 
 import check from "../../constants/imgs/Group.png"
 import UserContext from "../../contexts/UserContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
-
+import { BASE_URL } from "../../constants/urls";
+import axios from "axios";
 
 import TodayDay from "./TodayDay";
 
 export default function TodayPage() {
 
-    const { arrayHabits } = useContext(UserContext)
+    const {  userToken } = useContext(UserContext)
+    const {percentage, setPercentage}= useContext(UserContext)
+    const [currentDayHabit, setCurrentDayhabit]= useState([])
+
+    const [markDoneGreen, setMarkDone]= useState(false)
+
+    useEffect(()=>{
+        axios.get(`${BASE_URL}/habits/today`,{
+                headers: {
+                    'Authorization': `Bearer ${userToken}`
+                }
+        })
+        .then((ans)=> setCurrentDayhabit(ans.data)   
+        )
+        .catch((err)=> alert(err.response.data.mensage))
+    },[currentDayHabit])
+
+    useEffect(() => {
+        const habitsDone = currentDayHabit.filter(currentDayHabit=> currentDayHabit.done === true);
+        if(currentDayHabit.length){
+            const newPercentage = ((habitsDone.length/currentDayHabit.length) *100)
+            
+            setPercentage(newPercentage.toFixed(0))
+        }
+       
+
+    }, [currentDayHabit])
+
+console.log(percentage)
+
+    function markDone(id, aDone){
+        let checkOrnot="check"
+        if(aDone==true){
+            checkOrnot="uncheck"
+        }
+        const body={};
+          axios.post(`${BASE_URL}/habits/${id}/${checkOrnot} `, body,{
+            headers: {
+                'Authorization': `Bearer ${userToken}`
+            }
+    }).then(()=>setMarkDone(true))
+    .catch(err=>alert(err.response.data.mensage))
+    }
 
     return (
         <>
             <Header />
             <TodayDay/>
- 
-            {arrayHabits.map((array)=>(
+            <TodayContainer>
+            {currentDayHabit.map((array)=>(
             <CardToday key={array.id}>
                 <div>
                     <h1>{array.name}</h1>
-                    <p>Sequência atual: 3 dias</p>
-                    <p>Seu recorde: 5 dias</p>
+                    <p>Sequência atual: {array.currentSequence}</p>
+                    <p>Seu recorde: {array.highestSequence}</p>
                 </div>
-                <Check>
+                <Check markDoneGreen={array.done} onClick={()=>(markDone(array.id, array.done))}>
                     <img src={check} />
                 </Check>
             </CardToday>))}
             <Menu />
+            </TodayContainer>
         </>
     );
 }
@@ -74,10 +118,14 @@ const Check = styled.button`
  width: 69px;
 height: 69px;
 border-radius:5px;
-background-color:#EBEBEB;
+background-color:${(props)=>(props.markDoneGreen)?" #8FC549":"#EBEBEB"};
 border: 1px solid #E7E7E7;
 top:13px;
 right:13px;
 position:absolute;
 
+ `
+
+ const TodayContainer=styled.div`
+ margin-bottom:90px;
  `
