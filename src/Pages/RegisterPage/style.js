@@ -39,6 +39,10 @@ button{
     font-weight: 400;
     font-size: 20.976px;
     line-height: 26px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 p{
     font-family: 'Lexend Deca';
