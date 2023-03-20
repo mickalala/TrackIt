@@ -7,6 +7,8 @@ import daysArray from "../../constants/MockDays";
 import DaysButtons from "./DaysButtons";
 import GlobalStyle from "../../style/Globalstyle";
 
+import { ThreeDots } from 'react-loader-spinner';
+
 import trash from "../../constants/imgs/Vector.png"
 
 import UserContext from "../../contexts/UserContext";
@@ -25,6 +27,8 @@ export default function HabitsPage() {
 
     const [createdHabit, setCreatedHabit] = useState("")
 
+    const [load, setLoad] = useState(false)
+
     useEffect(() => {
         axios.get(`${BASE_URL}/habits`, {
             headers: {
@@ -38,9 +42,12 @@ export default function HabitsPage() {
     }, [arrayHabits])
 
     function sendHabit() {
-        if(days.length===0){
-           return alert("voce não colocou os dias ein.Volte.")
+        setLoad(true)
+        if (days.length === 0) {
+            setLoad(false)
+            return alert("voce não colocou os dias ein.Volte.")
         }
+        
         const body = { name: createdHabit, days: days }
         axios.post(`${BASE_URL}/habits`, body, {
             headers: {
@@ -48,11 +55,15 @@ export default function HabitsPage() {
             }
         })
             .then(() => {
+                setLoad(false)
                 setCreatedHabit("")
                 setDays([])
                 setShowCreateHabit(false)
             })
-            .catch(err => alert(err.response.data.message))
+            .catch(err => {
+                alert(err.response.data.message)
+                setLoad(false)
+            })
     }
 
     function deleteCard(id) {
@@ -76,15 +87,16 @@ export default function HabitsPage() {
     return (
         <>
             <Header />
-            <GlobalStyle/>
+            <GlobalStyle />
             <HabitsContainer>
                 <AddHabit>
                     <h1>Meus hábitos</h1>
                     <button onClick={() => setShowCreateHabit(true)} data-test="habit-create-btn">+</button>
                 </AddHabit>
-                <CardAddHabit showCreateHabit={showCreateHabit} data-test="habit-create-container" >
+
+                {(load === false) && (<CardAddHabit showCreateHabit={showCreateHabit} data-test="habit-create-container" >
                     <input type="text" placeholder={"nome do hábito"}
-                        value={createdHabit} onChange={(e) => setCreatedHabit(e.target.value)} data-test="habit-name-input"/>
+                        value={createdHabit} onChange={(e) => setCreatedHabit(e.target.value)} data-test="habit-name-input" />
                     <DaysButtonsContainer>
                         {daysArray.map((d) => <DaysButtons d={d} key={d.numberday} />)}
                     </DaysButtonsContainer>
@@ -93,7 +105,22 @@ export default function HabitsPage() {
                         <button onClick={() => setShowCreateHabit(false)} data-test="habit-create-cancel-btn">Cancelar</button>
                         <button onClick={sendHabit} data-test="habit-create-save-btn" >Salvar</button>
                     </SaveOrCancel>
-                </CardAddHabit>
+                </CardAddHabit>)}
+
+                {(load === true) && (
+                <CardAddHabit showCreateHabit={showCreateHabit} data-test="habit-create-container" >
+                    <input type="text" placeholder={"nome do hábito"} disabled
+                        value={createdHabit} onChange={(e) => setCreatedHabit(e.target.value)} data-test="habit-name-input" />
+                    <DaysButtonsContainer>
+                        {daysArray.map((d) => <DaysButtons d={d} key={d.numberday}/>)}
+                    </DaysButtonsContainer>
+
+                    <SaveOrCancel>
+                        <button onClick={() => setShowCreateHabit(false)} data-test="habit-create-cancel-btn">Cancelar</button>
+                        <button onClick={sendHabit} data-test="habit-create-save-btn" disabled opacity={0.7}>{<ThreeDots  width={51} color={"#ffffff"} />}</button>
+                    </SaveOrCancel>
+                </CardAddHabit>)}
+
                 {(arrayHabits.length == 0) && (<p >Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>)}
                 {arrayHabits.map((a) =>
                 (<CardHabit key={a.id} data-test="habit-container" >

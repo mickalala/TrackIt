@@ -86,8 +86,11 @@ margin-top:8px;
 `
 const SaveOrCancel = styled.div`
 position:absolute;
-right:16px;
+right:96px;
 bottom:15px;
+height:35px;
+width:90px;
+display:flex;
 
 button{
     height: 35px;
@@ -100,11 +103,19 @@ button{
 button:first-child {
     color: #52B6FF;
     background-color:transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 button:last-child{
     background-color: #52B6FF;
     color:#FFFFFF;
     margin-left:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 84px;
 }
 
 `
