@@ -35,11 +35,11 @@ export default function DaysButtons({ d }) {
     return (
         days.includes(d.numberday) ?
             <DayWeekSelected onClick={() => chosingDays(d.numberday)}
-                key={d.numberday} clicked={clicked} days={days}>
+                key={d.numberday} clicked={clicked} days={days} data-test="habit-day">
                 {d.day}
             </DayWeekSelected> :
             <DayWeekNotSelected onClick={() => chosingDays(d.numberday)}
-                key={d.numberday} clicked={clicked} days={days}>
+                key={d.numberday} clicked={clicked} days={days} data-test="habit-day">
                 {d.day}
             </DayWeekNotSelected>
     )

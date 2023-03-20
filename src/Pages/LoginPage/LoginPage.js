@@ -34,13 +34,13 @@ export default function LoginPage() {
             <img src={logo} alt={"logo.png"} />
             <input placeholder="email" type={"email"}
             name={"email"}
-            value={form.email} onChange={handleForm}/>
+            value={form.email} onChange={handleForm} data-test="email-input"/>
             <input placeholder="senha" type={"password"}
             name={"password"}
-            value={form.password} onChange={handleForm}/>
+            value={form.password} onChange={handleForm}  data-test="password-input" />
 
-            <button onClick={logUser}>Entrar</button>
-            <Link to={"/cadastro"}>
+            <button onClick={logUser}  data-test="login-btn">Entrar</button>
+            <Link to={"/cadastro"}  data-test="signup-link">
                 <p>Não tem uma conta? Cadastre-se!</p>
             </Link>
         </LoginForm>

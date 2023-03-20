@@ -6,6 +6,7 @@ import { useContext, useEffect } from "react";
 
 import UserContext from "../../contexts/UserContext";
 import { BASE_URL } from "../../constants/urls";
+import GlobalStyle from "../../style/Globalstyle";
 
 export default function HistoryPage() {
 
@@ -23,6 +24,7 @@ export default function HistoryPage() {
     return (
         <>
             <Header />
+            <GlobalStyle/>
             <History>
                 <h1>Histórico</h1>
                 <p>Em breve você poderá ver o histórico dos seus hábitos aqui!</p>

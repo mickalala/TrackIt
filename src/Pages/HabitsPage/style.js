@@ -54,7 +54,7 @@ const HabitsContainer = styled.div`
 `
 
 const CardAddHabit = styled.div`
-background-color: lightcyan;
+background-color:#FFFFFF;
 height: 180px;
 width: 340px;
 border-radius: 5px;
@@ -112,7 +112,7 @@ const CardHabit=styled.div`
 height: 91px;
 width: 340px;
 border-radius: 5px;
-background-color: lightgoldenrodyellow ;
+background-color: #FFFFFF ;
 margin-top:20px;
 padding-top:13px;
 display:flex;

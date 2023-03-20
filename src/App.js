@@ -13,16 +13,17 @@ import UserContext from "./contexts/UserContext"
 
 export default function App() {
 
-  const [userImg, setUserImg]= useState("")
-  const [userToken, setUserToken]= useState("")
+  const [userImg, setUserImg] = useState("")
+  const [userToken, setUserToken] = useState("")
 
-  const [arrayHabits, setArrayHabits]= useState([])
+  const [arrayHabits, setArrayHabits] = useState([])
   const [days, setDays] = useState([]);
-  const [percentage, setPercentage]= useState(0)
+  const [percentage, setPercentage] = useState(0)
 
   return (
-    <UserContext.Provider value={{userImg,setUserImg, userToken, setUserToken, days, setDays, arrayHabits, setArrayHabits, percentage, setPercentage}}>
+    <UserContext.Provider value={{ userImg, setUserImg, userToken, setUserToken, days, setDays, arrayHabits, setArrayHabits, percentage, setPercentage }}>
       <BrowserRouter>
+
 
         <Routes>
           <Route path="/" element={<LoginPage />} />
@@ -38,5 +39,6 @@ export default function App() {
 
       </BrowserRouter>
     </UserContext.Provider>
+
   )
 }

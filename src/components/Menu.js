@@ -13,18 +13,18 @@ export default function Menu() {
   
 
     return (
-        <MenuStyle>
+        <MenuStyle data-test="menu">
             <Footer>
-                <Link to={"/habitos"} >
+                <Link to={"/habitos"} data-test="habit-link">
                     <p>Hábitos</p>
                 </Link>
 
-                <Link to={"/historico"}>
+                <Link to={"/historico"}  data-test="history-link">
                     <p>Histórico</p>
                 </Link>
             </Footer>
             <div>
-                <Link to={"/hoje"}>
+                <Link to={"/hoje"}  data-test="today-link">
                     <CircularProgressbar value={percentage} text={"Hoje"} 
                       background
                       backgroundPadding={6}
@@ -46,7 +46,7 @@ const Footer = styled.footer`
    left: 0px;
    position: fixed;
    bottom:0px;
-   background-color:pink;
+   background-color: #FFFFFF;
 
    font-family: Lexend Deca;
    font-size: 18px;

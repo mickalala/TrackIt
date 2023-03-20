@@ -5,9 +5,9 @@ export default function CardHabitDaysButtons({d, a}){
 
     return( a.includes(d.numberday)?
         <ButtonDaySelected key={d.numberday}
-        disabled>{d.day}</ButtonDaySelected>:
+        disabled data-test="habit-day">{d.day}</ButtonDaySelected>:
         <ButtonDayNotSelected key={d.numberday}
-        disabled>{d.day}</ButtonDayNotSelected>
+        disabled data-test="habit-day"> {d.day}</ButtonDayNotSelected>
     )
 }
 

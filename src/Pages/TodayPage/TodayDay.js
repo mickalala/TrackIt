@@ -33,9 +33,9 @@ export default function TodayDay() {
 
     return (
         <TodayStyled>
-            <h1>{today}, {dayjs().$D}/{thisMonth}</h1>
-            {(percentage==0)&&(<Not>Nenhum hábito concluído ainda</Not>)}
-            {(percentage>0)&&(<ShowPercentage>{percentage}% dos hábitos concluídos</ShowPercentage>)}
+            <h1 data-test="today">{today}, {dayjs().$D}/{thisMonth}</h1>
+            {(percentage==0)&&(<Not data-test="today-counter">Nenhum hábito concluído ainda</Not>)}
+            {(percentage>0)&&(<ShowPercentage data-test="today-counter">{percentage}% dos hábitos concluídos</ShowPercentage>)}
         </TodayStyled>
     )
 }
