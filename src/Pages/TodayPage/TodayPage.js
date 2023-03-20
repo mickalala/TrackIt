@@ -1,25 +1,24 @@
 import Header from "../../components/Header";
 import Menu from "../../components/Menu";
 import styled from "styled-components";
-import dayjs from "dayjs";
 
 import check from "../../constants/imgs/Group.png"
 import UserContext from "../../contexts/UserContext";
 import { useContext } from "react";
 
+
+
+import TodayDay from "./TodayDay";
+
 export default function TodayPage() {
 
     const { arrayHabits } = useContext(UserContext)
 
-    console.log(dayjs().month())
-
     return (
         <>
             <Header />
-            <TodayStyled>
-                <h1>Segunda, {dayjs().$D}/03</h1>
-                <p>Nenhum hábito concluído ainda</p>
-            </TodayStyled>
+            <TodayDay/>
+ 
             {arrayHabits.map((array)=>(
             <CardToday key={array.id}>
                 <div>
@@ -36,27 +35,6 @@ export default function TodayPage() {
     );
 }
 
-const TodayStyled = styled.div`
-    margin-top:98px;
-    margin-left:17px;
-    h1{
-    font-family: Lexend Deca;
-    font-size: 23px;
-    font-weight: 400;
-    line-height: 29px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #126BA5;}
-    p{
-        font-family: 'Lexend Deca';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 17.976px;
-        line-height: 22px;
-
-        color: #BABABA;
-    }
-`
 
 const CardToday = styled.div`
 margin-left:17px;

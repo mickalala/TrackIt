@@ -49,7 +49,6 @@ const HabitsContainer = styled.div`
     letter-spacing: 0em;
     text-align: left;
     color: #666666;
-    display:none;
 
    }
 `
