@@ -1,3 +1,38 @@
+# Track-It
+
+TrackIt is a habit tracker where the user can have an insight into the consistency of their habits. It has a list of user habits, where the habits of the day appear and can be marked as done, new habits can also be added. 
+
+<p align='center'>
+try it out: https://track-it-projeto-11.vercel.app/
+</p>
+
+## Technologies
+The following tools and frameworks were used in the construction of the project:
+
+<p>
+  <img style='margin: 5px;' src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB'>
+  <img style='margin: 5px;' src='https://img.shields.io/badge/styled-components%20-%2320232a.svg?&style=for-the-badge&color=b8679e&logo=styled-components&logoColor=%3a3a3a'>
+  <img style='margin: 5px;' src='https://img.shields.io/badge/react-icons%20-%2320232a.svg?&style=for-the-badge&color=f28dc7&logo=react-icons&logoColor=%2361DAFB'>
+  <img style='margin: 5px;' src='https://img.shields.io/badge/axios-671ddf?&style=for-the-badge&logo=axios&logoColor=white'>
+</p>
+
+
+## How to use
+1. Clone this repository
+2. Install dependencies
+```bash
+npm i
+```
+3. Run the front-end with
+```bash
+npm start
+```
+4. You can optionally build the project running
+```bash
+npm run build
+```
+5. Finally access http://localhost:3000 on your favorite browser (unless it is Internet Explorer)
+   
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
