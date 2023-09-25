@@ -3,6 +3,11 @@
 TrackIt is a habit tracker where the user can have an insight into the consistency of their habits. It has a list of user habits, where the habits of the day appear and can be marked as done, new habits can also be added. 
 
 <p align='center'>
+ <img src="https://github.com/mickalala/TrackIt/assets/117683871/832ab74e-48f8-4b23-b312-dc8c914adc9e"/>
+
+</p>
+
+<p align='center'>
 try it out: https://track-it-projeto-11.vercel.app/
 </p>
 
